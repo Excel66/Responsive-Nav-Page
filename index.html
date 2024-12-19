@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snap Website</title>
+    <script src="https://kit.fontawesome.com/085890d577.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            color: #000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .auth-buttons a {
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #000;
+            text-decoration: none;
+            border-radius: 5px;
+            color: #000;
+            transition: 0.3s ease;
+        }
+
+        .auth-buttons .register-btn {
+            background: #000;
+            color: #fff;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: #000;
+        }
+
+        .hero-content p {
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #000;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 1rem 0;
+            transition: 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: #333;
+        }
+
+        .hero-image {
+            max-width: 50%;
+        }
+
+        .hero-image picture img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 769px) {
+            .hero {
+                flex-direction: row;
+            }
+
+            .hero-content {
+                max-width: 50%;
+            }
+
+            .hero-image {
+                max-width: 50%;
+                text-align: right;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .auth-buttons {
+                display: none;
+            }
+
+            .navbar.active {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                flex-direction: column;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                max-width: 100%;
+                margin-top: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">snap</div>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Features <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-list"></i> Todo List</a>
+                            <a href="#"><i class="fas fa-calendar-alt"></i> Calendar</a>
+                            <a href="#"><i class="fas fa-bell"></i> Reminders</a>
+                            <a href="#"><i class="fas fa-tasks"></i> Planning</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Company <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-history"></i> History</a>
+                            <a href="#"><i class="fas fa-users"></i> Our Team</a>
+                            <a href="#"><i class="fas fa-blog"></i> Blog</a>
+                        </div>
+                    </li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="register-btn">Register</a>
+            </div>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Make remote work</h1>
+            <p>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p>
+            <a href="#" class="cta-btn">Learn more</a>
+        </div>
+        <div class="hero-image">
+            <picture>
+                <source srcset="image-hero-desktop.png" media="(min-width: 769px)">
+                <img src="image-hero-mobile.png" alt="Responsive Hero Image">
+            </picture>
+        </div>
+    </main>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

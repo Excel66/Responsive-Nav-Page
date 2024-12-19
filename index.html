@@ -1,197 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Template with Dropdown and Image</title>
-  <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snap Website</title>
+    <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script> <!-- Replace "yourkitid" with your FontAwesome Kit ID -->
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
 
-    /* Header Styles */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      position: relative;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
+        /* Header */
+        .header {
+            background: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+        }
 
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-    }
+        .navbar {
+            display: flex;
+        }
 
-    /* Dropdown for small screens */
-    .menu-icon {
-      display: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-    }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
 
-    #dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      width: 100%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+        }
 
-    #dropdown-menu ul {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
-    }
+        .dropdown {
+            position: relative;
+        }
 
-    /* Hero Section */
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2rem;
-      gap: 2rem;
-    }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            min-width: 150px;
+            z-index: 1000;
+        }
 
-    .hero-text {
-      max-width: 50%;
-    }
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            color: #000;
+        }
 
-    .hero-text h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
-    .hero-text p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      color: #555;
-    }
+        .auth-buttons a {
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #000;
+            text-decoration: none;
+            border-radius: 5px;
+            color: #000;
+            transition: 0.3s ease;
+        }
 
-    .hero-text button {
-      padding: 0.8rem 1.5rem;
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
+        .auth-buttons .register-btn {
+            background: #000;
+            color: #fff;
+        }
 
-    .hero-image {
-      max-width: 50%;
-      text-align: center;
-    }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 1rem;
+            flex-wrap: wrap;
+        }
 
-    /* Media Queries */
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-      }
+        .hero-content h1 {
+            font-size: 3rem;
+            color: #000;
+        }
 
-      .menu-icon {
-        display: block;
-      }
+        .hero-content p {
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
 
-      #dropdown-menu.show {
-        display: block;
-      }
+        .cta-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #000;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 1rem 0;
+            transition: 0.3s ease;
+        }
 
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
+        .cta-btn:hover {
+            background: #333;
+        }
 
-      .hero-text,
-      .hero-image {
-        max-width: 100%;
-      }
-    }
-  </style>
+        .hero-image picture img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .logos img {
+            max-width: 80px;
+            margin: 0 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .auth-buttons {
+                display: none;
+            }
+
+            .navbar.active {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                flex-direction: column;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="logo">snap</div>
-    <nav>
-      <div class="menu-icon" onclick="toggleMenu()">☰</div>
-      <ul>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Company</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
-    <div id="dropdown-menu">
-      <ul>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Company</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <!-- Hero Text -->
-    <div class="hero-text">
-      <h1>Make remote work</h1>
-      <p>
-        Get your team in sync, no matter your location. Streamline processes,
-        create team rituals, and watch productivity soar.
-      </p>
-      <button>Learn more</button>
-    </div>
-
-    <!-- Responsive Hero Image -->
-    <div class="hero-image">
-      <picture>
-        <!-- Image for smaller screens -->
-        <source media="(max-width: 768px)" srcset="image-hero-mobile.png">
-        <!-- Image for larger screens -->
-        <source media="(min-width: 769px)" srcset="image-hero-desktop.png">
-        <!-- Default fallback image -->
-        <img src="https://via.placeholder.com/500x500?text=Default+Image" alt="Person working on laptop">
-      </picture>
-    </div>
-  </section>
-
-  <!-- JavaScript for Dropdown -->
-  <script>
-    function toggleMenu() {
-      const dropdownMenu = document.getElementById('dropdown-menu');
-      dropdownMenu.classList.toggle('show');
-    }
-  </script>
+    <header class="header">
+        <div class="container">
+            <div class="logo">snap</div>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Features <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-list"></i> Todo List</a>
+                            <a href="#"><i class="fas fa-calendar-alt"></i> Calendar</a>
+                            <a href="#"><i class="fas fa-bell"></i> Reminders</a>
+                            <a href="#"><i class="fas fa-tasks"></i> Planning</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Company <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-history"></i> History</a>
+                            <a href="#"><i class="fas fa-users"></i> Our Team</a>
+                            <a href="#"><i class="fas fa-blog"></i> Blog</a>
+                        </div>
+                    </li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="register-btn">Register</a>
+            </div>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Make remote work</h1>
+            <p>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p>
+            <a href="#" class="cta-btn">Learn more</a>
+            
+        </div>
+        <div class="hero-image">
+            <picture>
+                <source srcset="image-hero-desktop.png" media="(min-width: 769px)">
+                <img src="image-hero-mobile.png" alt="Responsive Hero Image">
+            </picture>
+        </div>
+    </main>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
